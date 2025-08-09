@@ -1,0 +1,56 @@
+<div class="w-full h-full flex flex-col items-center justify-start gap-4 relative font-sans  xl:px-[10%] 2xl:px-[20%]">
+    <div
+        class="animate-slide-from-bottom text-center relative w-full h-[250px] sm:h-[400px] bg-blue-300 flex items-center justify-center overflow-hidden rounded-lg animate-slide-from-bottom ">
+        <!-- Decorative rotated block -->
+        <div
+            class="w-[920px] sm:h-[500px] h-[250px] z-10 bg-blue-500 transform translate-x-1/5 translate-y-1/5 -rotate-45 absolute">
+        </div>
+
+        <!-- Centered Text + Button -->
+        <div
+            class="z-30 text-white text-center transform -translate-y-1/2  sm:-translate-y-1/2 px-4 max-w-[90%] mx-auto sm:max-w-xl lg:max-w-2xl xl:max-w-4xl">
+            <h1
+                class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold font-sans text-stroke-3  leading-snug mb-4">
+                Our Categories!
+            </h1>
+            <!-- <p class="text-sm sm:text-base md:text-lg lg:text-xl mb-6">
+    Welcome to Small Market — where quality meets convenience, every single day.
+  </p> -->
+
+            <div class="absolute top-32 inset-0 flex items-center justify-center z-30">
+                <div
+                    class="animate-bounce size-10 flex items-center justify-center rounded-full bg-white p-2 ring-1 ring-gray-900/5 dark:bg-white/5 dark:ring-white/20">
+                    <svg class="size-6 text-pink-500" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                        stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                        <path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                    </svg>
+                </div>
+            </div>
+
+        </div>
+        <!-- Flipped Image -->
+        <div
+            class="absolute translate-x-1/4 max-sm:-top-12 md:translate-x-1/2 sm:translate-x-1/2 lg:translate-x-full translate-y-[40px] sm:translate-y-[80px] transform z-20">
+            <img class="w-[300px] sm:w-[400px]" src="assets/categoryPromote.png" alt="Market Banner Image">
+        </div>
+
+
+
+    </div>
+
+
+
+    <div class=" w-full h-full lg:px-40 flex flex-col mt-4 items-center">
+        <div class="w-full h-auto flex flex-col items-center justify-center ">
+            <span class="text-2xl font-bold text-gray-800">Explore Our Categories</span>
+            <p class="text-gray-600 ">Discover a wide range of products
+        </div>
+        <div class="bg-white w-fit h-fit p-4 flex flex-wrap items-start justify-center gap-4"> 
+            @for(category of categoryList; track category.id){
+                <app-top-category [category]="category" (chooseCategory)="selectedCategory($event)" class="cursor-pointer"></app-top-category>
+            }
+            
+            
+        </div>
+    </div>
+</div>

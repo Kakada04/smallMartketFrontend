@@ -1,0 +1,162 @@
+<div class="max-w-3xl mx-auto mt-8 p-8 bg-white rounded-xl shadow-lg transition-all duration-300 animate-fade-in">
+  <h2 class="text-3xl font-extrabold text-blue-500 mb-8 text-center tracking-tight">User Profile</h2>
+
+  @if (isLoading) {
+  <div class="text-center py-8">
+    <p class="mt-1 text-gray-800 text-base font-medium">Loading user data...</p>
+  </div>
+  } @else if (currentUser) {
+  <form [formGroup]="userForm">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+      <!-- First Name -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">First Name</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ currentUser.first_name }}</p>
+        } @else {
+        <input type="text" formControlName="first_name"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
+        }
+      </div>
+
+      <!-- Last Name -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Last Name</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ currentUser.last_name }}</p>
+        } @else {
+        <input type="text" formControlName="last_name"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
+        }
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Email</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ currentUser.gmail }}</p>
+        } @else {
+        <input type="email" formControlName="gmail"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
+        }
+      </div>
+
+      <!-- Password -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Password</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">••••••••</p>
+        } @else {
+        <input type="password" formControlName="password"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
+          placeholder="Leave blank to keep current" />
+        }
+      </div>
+
+      <!-- Gender -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Gender</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ currentUser.gender || 'Not specified' }}</p>
+        } @else {
+        <select formControlName="gender"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+        }
+      </div>
+
+      <!-- Phone Number -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Phone Number</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ currentUser.phone_number || 'Not specified' }}</p>
+        } @else {
+        <input type="text" formControlName="phone_number"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200" />
+        }
+      </div>
+
+      <!-- Location -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Location</label>
+        @if (!isEditing) {
+        <p class="mt-1 text-gray-800">{{ getLocationName(currentUser.location_id) }}</p>
+        } @else {
+        <select formControlName="location_id"
+          class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200">
+          <option value="">Select Location</option>
+          @for (location of locations; track location.id) {
+          <option [value]="location.id" [selected]="location.id === currentUser.id">
+            {{ location.location }}
+          </option>
+          }
+        </select>
+        }
+      </div>
+
+      <!-- Registration Date (Readonly) -->
+      <div>
+        <label class="block text-sm font-semibold text-gray-700 mb-1">Registration Date</label>
+        <p class="mt-1 text-gray-800">{{ currentUser.reg_date | date:'mediumDate' }}</p>
+      </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="mt-6 text-right space-x-3">
+      <button type="button" (click)="onLogoutClick()"
+    class="px-5 py-2 bg-red-500 text-white rounded-full hover:bg-red-600 transition duration-300 font-semibold">
+    Logout
+  </button>
+
+      @if (!isEditing) {
+      <button type="button" (click)="toggleEdit()"
+        class="px-5 py-2 rounded-full font-semibold transition duration-300 bg-blue-500 text-white hover:bg-blue-600">
+        Edit Profile
+      </button>
+      } @else {
+      <button type="button" (click)="saveProfile()"
+        class="px-5 py-2 rounded-full font-semibold transition duration-300 bg-green-500 text-white hover:bg-green-600">
+        Save Changes
+      </button>
+      <button type="button" (click)="toggleEdit()"
+        class="px-5 py-2 rounded-full font-semibold transition duration-300 bg-gray-200 text-gray-700 hover:bg-gray-300">
+        Cancel
+      </button>
+      }
+    </div>
+  </form>
+  } @else {
+  <div class="text-center py-8 text-red-500">
+    Failed to load user data. Please try again later.
+  </div>
+  }
+
+
+</div>
+
+<!-- Modal -->
+ @if(showLogoutModal){
+  <div  class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 w-full max-w-sm text-center">
+    <h2 class="text-lg font-semibold text-gray-800 dark:text-gray-100 mb-4">
+      Are you sure you want to log out?
+    </h2>
+    <div class="flex justify-center gap-4">
+      <button (click)="confirmLogout()"
+        class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">
+        Confirm
+      </button>
+      <button (click)="cancelLogout()"
+        class="px-4 py-2 bg-gray-300 text-gray-800 rounded hover:bg-gray-400 transition dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+ }
+

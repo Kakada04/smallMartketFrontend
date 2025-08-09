@@ -1,0 +1,50 @@
+<div
+  class="bg-gradient-to-b from-blue-200 via-white to-blue-100 min-h-screen flex items-center justify-center font-sans">
+  <div class="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md animation-slideIn">
+    <div class="flex justify-center mb-6">
+      <img src="assets/shop-with-sign-open-design.png" alt="Ebolt" class="h-10" />
+    </div>
+
+    <h2 class="text-2xl font-bold text-center text-gray-800 mb-2">
+      {{ isLoginPage ? 'Sign in with email' : 'Create your account' }}
+    </h2>
+    <p class="text-center text-sm text-gray-500 mb-6">
+      {{ isLoginPage
+      ? 'Make a new doc to bring your words, data, and teams together. For free.'
+      : 'Start collaborating and organizing smarter. It is free!' }}
+    </p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="grid gap-4">
+      <ng-container *ngIf="!isLoginPage">
+        <input formControlName="first_name" placeholder="First name" class="input" />
+        <input formControlName="last_name" placeholder="Last name" class="input" />
+        <select formControlName="gender" class="input">
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <input formControlName="phone_number" placeholder="Phone number" class="input" />
+        <!-- <input formControlName="location_id" type="number" placeholder="Location ID" class="input" /> -->
+        <select formControlName="location_id" class="input">
+          <option value="" disabled selected>Select a location</option>
+          @for(location of locations; track location.id) {
+          <option [value]="location.id">{{location.location}}</option>
+          }
+        </select>
+      </ng-container>
+
+      <input formControlName="gmail" placeholder="Email" class="input" />
+      <input formControlName="password" type="password" placeholder="Password" class="input" />
+
+      <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-900 transition">
+        {{ isLoginPage ? 'Login' : 'Sign Up' }}
+      </button>
+    </form>
+
+    <div class="text-center mt-6 text-sm text-gray-500">
+      <a [routerLink]="isLoginPage ? '/signup' : '/login'" class="text-blue-500 hover:underline">
+        {{ isLoginPage ? 'Or sign up' : 'Already have an account? Sign in' }}
+      </a>
+    </div>
+  </div>
+</div>

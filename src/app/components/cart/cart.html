@@ -1,0 +1,65 @@
+<div class="w-full h-fit font-sans flex justify-center">
+  <div class="w-full xl:w-1/2 h-full relative flex flex-col items-center gap-6 p-4">
+    <div
+      class="w-full h-[48px] sticky top-0 xl:top-[64px] bg-blue-500 text-white flex flex-col items-center justify-center rounded-full">
+      <h1 class="text-xl font-bold">Cart</h1>
+    </div>
+
+    <div class="w-full h-fit flex flex-col items-center bg-gray-100 border border-gray-300 rounded-2xl p-4">
+      <div class="w-full h-fit flex flex-col items-center justify-center gap-4">
+        <span class="text-2xl font-bold text-gray-800">Your Cart</span>
+        <p class="text-gray-600 mt-2">Review your selected products</p>
+      </div>
+
+      <div class="w-full h-fit flex flex-wrap items-center justify-center gap-4 mt-4">
+        @for(product of products; track product.id) {
+         
+          <app-cart-item [product]="product" (QuantityChange)="updateQty($event)" (productDelete)="deleteCart($event)"></app-cart-item>
+        }
+      </div>
+
+      <div class="w-full h-fit flex items-center justify-between mt-6">
+        <span class="text-lg font-semibold">Total:</span>
+        <span class="text-lg font-bold text-green-500">${{total_price}}</span>
+      </div>
+
+      @if(products.length === 0) {
+        <p class="text-gray-500 mt-4">Your cart is empty</p>
+      }@else {
+        <button (click)="proceedToCheckout()"
+        class="w-full bg-blue-500 text-white py-2 rounded-full hover:bg-blue-600 transition duration-300 mt-4">
+        Proceed to Checkout
+      </button>
+      }
+      
+    </div>
+
+    <div *ngIf="qrCode && paymentStatus !== 'paid'"
+      class="absolute top-1/2 right-0 w-full mt-6 flex flex-col items-center">
+      <img [src]="qrCode" alt="Scan QR to Pay" class="w-64 h-64 object-contain border p-2 bg-white rounded-xl" />
+      <p class="text-gray-600 mt-2">Scan QR to pay</p>
+      <button (click)="simulatePayment()"
+        class="mt-2 bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600">
+        Simulate Payment
+      </button>
+    </div>
+
+
+  </div>
+
+
+  <div *ngIf="receipt"
+    class="absolute top-0 left-0 z-40 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+    <div class="flex flex-col items-center justify-center ">
+      
+      <app-receipt [receipt]="receiptData" [currentDate]="currentDate" [currentTime]="currentTime"></app-receipt>
+      <button (click)="receipt = false" class="w-[64px] text-2xl h-[64px] bg-gray-100 bg-opacity-50 rounded-full text-red-600 flex items-center justify-center"><svg
+          xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 14 14" class="fill-current">
+          <path fill-rule="evenodd"
+            d="M13.655 1.335a.7.7 0 0 0-.99-.99L7 6.01L1.335.345a.7.7 0 0 0-.99.99L6.01 7L.345 12.665a.7.7 0 0 0 .99.99L7 7.99l5.665 5.665a.7.7 0 1 0 .99-.99L7.99 7z"
+            clip-rule="evenodd" />
+        </svg></button>
+    </div>
+  </div>
+
+</div>

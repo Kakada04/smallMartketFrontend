@@ -1,0 +1,59 @@
+<div class="flex flex-col items-center justify-center sm:px-[10%] sm:py-10">
+  <div class="w-full px-4 bg-white rounded-md ">
+  <div class="text-blue-700 font-bold text-lg  flex items-center gap-2 p-2">
+    <svg class="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v1H3V4zM3 6h14v10a1 1 0 01-1 1H4a1 1 0 01-1-1V6zm5 3a1 1 0 100 2h4a1 1 0 100-2H8z" />
+    </svg>
+    All Order List
+  </div>
+
+  <table class="w-full text-sm text-left text-gray-700 dark:text-gray-300 border border-blue-100 rounded overflow-hidden">
+    <thead class="text-xs uppercase bg-blue-100 text-blue-700">
+      <tr>
+       
+        <th class="px-4 py-2">📦 Product</th>
+        <th class="px-4 py-2">🖼 Image</th>
+        <th class="px-4 py-2">💲Unit Price</th>
+        <th class="px-4 py-2">📊 Total Price</th>
+        <th class="px-4 py-2">🔘 Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      @if(orders === null || orders === undefined) {
+        <tr>
+          <td colspan="6" class="px-4 py-4 text-center text-blue-500">Loading orders...</td>
+        </tr>
+      }@else if(orders.length === 0) {
+        <tr>
+          <td colspan="6" class="px-4 py-4 text-center text-blue-500">No orders found.</td>
+        </tr>
+      }
+      
+      @for(order of orders; track order.id) {
+        @for(item of order.order_details; track item.id) {
+          <tr class="even:bg-blue-50 odd:bg-white border-b border-blue-100">
+           
+            <td class="px-4 py-3">{{ item.product.product_name }}</td>
+            <td class="px-4 py-3">
+              <img class="w-10 h-10 object-cover rounded ring-1 ring-blue-200" 
+                   [src]="'https://smallmarketbackendlaravel-production.up.railway.app/storage/'+item.product.banner_img" 
+                   alt="Product Image">
+            </td>
+            <td class="px-4 py-3 text-blue-600">{{ item.price | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="px-4 py-3 text-blue-800">{{ order.total_price | currency:'USD':'symbol':'1.2-2' }}</td>
+            <td class="px-4 py-3">
+              <span [ngClass]="{
+                'text-green-600 font-bold': order.payment_status === 'Paid',
+                'text-yellow-600 font-bold': order.payment_status === 'Pending',
+                'text-red-600 font-bold': order.payment_status === 'Failed'
+              }">
+                {{ order.payment_status }}
+              </span>
+            </td>
+          </tr>
+        }
+      }
+    </tbody>
+  </table>
+</div>
+</div>

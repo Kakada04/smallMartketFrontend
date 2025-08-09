@@ -51,6 +51,7 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+         
           "configurations": {
             "production": {
               "buildTarget": "SmallMarketCustomer:build:production"
@@ -81,5 +82,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "b5e5fe5b-9037-4ac8-8bd4-2acff5766974"
   }
 }

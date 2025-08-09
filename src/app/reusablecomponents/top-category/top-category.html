@@ -1,0 +1,7 @@
+<li (click)="choosed(category.id)"
+    class="flex-shrink-0 w-32 sm:w-48 flex flex-col justify-center items-center text-sm sm:text-base font-semibold text-gray-800 hover:scale-105 transition duration-500 ease-in-out">
+    <div class="w-32 sm:w-48 h-24 sm:h-32 bg-blue-200 rounded-lg flex justify-center items-center">
+        <img class="w-20 sm:w-28" [src]="category.full_banner_url" alt="Soft Drink">
+    </div>
+    <span class="mt-2">{{category.type}}</span>
+</li> 

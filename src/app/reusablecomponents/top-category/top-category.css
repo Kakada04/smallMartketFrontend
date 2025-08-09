@@ -1,0 +1,15 @@
+
+    @keyframes slide-from-bottom {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+
+    .animate-slide-from-bottom {
+        animation: slide-from-bottom 0.8s ease-out forwards;
+    }

@@ -1,0 +1,512 @@
+<div class="bg-gray-100 dark:bg-gray-300   w-full h-screen font-roboto overflow-x-hidden scrollbar-hide relative ">
+    <div class="sticky top-0 left-0 z-50 space-y-2 hidden">
+        <nav class="w-full h-[64px] bg-white grid grid-cols-5 2xl:grid-cols-6 md:grid-cols-4 gap-2 sm:gap-6 sm:p-4 p-3">
+
+            <div class="sm:hidden col-start-1 text-blue-500  " (click)="sidebar = true">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                    class="fill-current bg-gray-100 rounded-lg">
+                    <path
+                        d="M8 9q-.425 0-.712-.288T7 8t.288-.712T8 7h12q.425 0 .713.288T21 8t-.288.713T20 9zm0 4q-.425 0-.712-.288T7 12t.288-.712T8 11h12q.425 0 .713.288T21 12t-.288.713T20 13zm0 4q-.425 0-.712-.288T7 16t.288-.712T8 15h12q.425 0 .713.288T21 16t-.288.713T20 17zM4 9q-.425 0-.712-.288T3 8t.288-.712T4 7t.713.288T5 8t-.288.713T4 9m0 4q-.425 0-.712-.288T3 12t.288-.712T4 11t.713.288T5 12t-.288.713T4 13m0 4q-.425 0-.712-.288T3 16t.288-.712T4 15t.713.288T5 16t-.288.713T4 17" />
+                </svg>
+
+
+
+            </div>
+            <div routerLink="/home"
+                class="cursor-pointer col-start-2 col-span-2  sm:col-start-1 sm:col-span-1 flex justify-center items-center   max-sm:text-[18px] text-[24px]  font-semibold transform max-sm:-translate-x-[25px]">
+
+                <div
+                    class="flex flex-row sm:justify-end justify-start items-center w-full tranform -translate-y-2 text-blue-500">
+                    <div class="w-[48px]  sm:[w-32px]">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <g fill="none" fill-rule="evenodd" class="fill-current">
+                                <path
+                                    d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                                <path
+                                    d="M17.52 4a2 2 0 0 1 1.442.614l.12.137l3.05 3.812c.757.947.134 2.334-1.04 2.432L20.96 11H20v8a1 1 0 0 1-1.993.117L18 19v-8h-2v7a2 2 0 0 1-1.85 1.995L14 20H6a2 2 0 0 1-1.994-1.85L4 18v-7h-.96c-1.212 0-1.906-1.353-1.25-2.33l.08-.107l3.049-3.812a2 2 0 0 1 1.38-.743L6.482 4zM7 11H6v7h8v-7h-1v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zm4 0H9v3h2zm6.52-5H6.48l-2.4 3h15.84z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <span
+                        class="whitespace-nowrap  text-[16px] md:text-[20px] lg:text-[24px] font-semibold text-blue-500">
+                        Small Market
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="col-start-4 col-span-2 sm:col-start-2 2xl:col-span-4 md:col-span-2  w-full "
+                (click)="searchBoard = !searchBoard">
+                <div class="flex  w-full">
+
+                    <div class="relative ">
+                        <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                            <span class="sr-only">Search icon</span>
+                        </div>
+
+                    </div>
+                    <input type="text" id="search-navbar" [disabled]="searchBoard"
+                        class=" w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Search...">
+                </div>
+            </div>
+            <div class="max-sm:hidden flex justify-center items-center  2xl:col-start-6 md:col-start-4 ">
+                <ul class="flex flex-row  w-full">
+
+                    <li routerLink="/login" class="w-auto p-1 h-auto cursor-pointer">
+                        <div class="text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1zm6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5z" />
+                            </svg>
+                        </div>
+
+                    </li>
+
+                    <li routerLink="/favorite" class="w-auto p-1 h-auto cursor-pointer">
+                        <div class="text-gray-400">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M12 20.325q-.35 0-.712-.125t-.638-.4l-1.725-1.575q-2.65-2.425-4.788-4.812T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.537t2.5-.563q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125M11.05 6.75q-.725-1.025-1.55-1.563t-2-.537q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763t2.213 2.837t2.65 2.575T12 18.3q.85-.775 2.213-1.975t2.65-2.575t2.212-2.837T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .538T12.95 6.75q-.175.25-.425.375T12 7.25t-.525-.125t-.425-.375m.95 4.725" />
+                            </svg>
+                        </div>
+                    </li>
+                    <li routerLink="/user"
+                        class="w-auto p-1 h-full cursor-pointer tranform -translate-y-1 lg:-translate-y-2 cursor-pointer">
+                        <div class="flex flex-row gap-2">
+                            <div>
+                                <img class="w-[34px] h-auto rounded-full" src="avatar.avif">
+
+                            </div>
+                            <div class="flex flex-col tranform -translate-y-1 w-48">
+                                <span class="text-[14px]">
+                                    Wellcome!
+                                </span>
+
+                                <span class="font-semibold text-[14px]">
+                                    kakada ung
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+        <div class="w-full h-10 pl-40 pr-40 flex justify-center hidden md:block ">
+            <div class="w-full bg-gray-200 rounded-lg p-1  ">
+                <ul class="relative flex flex-row  justify-center gap-10 lg:gap-20 p-1">
+                    <div [ngClass]="{'lg:-translate-x-[297px] md:-translate-x-[219px]': bg === 'home', 'lg:-translate-x-[156px] md:-translate-x-[117px]': bg === 'category','-translate-x-[7px]': bg === 'product', 'lg:translate-x-[143px] md:translate-x-[102px]': bg === 'order',  'lg:translate-x-[293px] md:translate-x-[213px]': bg === 'contact','w-full bg-blue-200': bg === 'user' || bg ==='favorite'}"
+                        class="absolute w-[72px] h-6 tranform  z-10 h-2 bg-blue-500 rounded-lg transition-all duration-500 ease-out">
+
+                    </div>
+                    <li [routerLinkActive]="[ 'text-white']" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="/home"
+                        class=" z-20 cursor-pointer  font-roboto font-semibold text-gray-700 h-auto ">
+                        <span class=" p-1 rounded-lg ">
+                            Home
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-white']" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="/category"
+                        class=" z-20 cursor-pointer font-roboto font-semibold text-gray-700 h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            Category
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-white']" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="/product"
+                        class=" z-20 cursor-pointer font-roboto font-semibold text-gray-700 h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            Product
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-white']" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="/order"
+                        class=" z-20 cursor-pointer font-roboto font-semibold text-gray-700 h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            OrderList
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-white']" [routerLinkActiveOptions]="{ exact: true }"
+                        routerLink="/contact"
+                        class=" z-20 cursor-pointer  font-roboto font-semibold text-gray-700 h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            Contact
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="sticky top-0 left-0 z-50 ">
+        <nav class="w-full h-[64px] bg-white flex flex-row justify-center items-center lg:gap-6 gap-2 px-2">
+            <div class="lg:hidden  text-blue-500  " (click)="sidebar = true">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                    class="fill-current bg-gray-100 rounded-lg">
+                    <path
+                        d="M8 9q-.425 0-.712-.288T7 8t.288-.712T8 7h12q.425 0 .713.288T21 8t-.288.713T20 9zm0 4q-.425 0-.712-.288T7 12t.288-.712T8 11h12q.425 0 .713.288T21 12t-.288.713T20 13zm0 4q-.425 0-.712-.288T7 16t.288-.712T8 15h12q.425 0 .713.288T21 16t-.288.713T20 17zM4 9q-.425 0-.712-.288T3 8t.288-.712T4 7t.713.288T5 8t-.288.713T4 9m0 4q-.425 0-.712-.288T3 12t.288-.712T4 11t.713.288T5 12t-.288.713T4 13m0 4q-.425 0-.712-.288T3 16t.288-.712T4 15t.713.288T5 16t-.288.713T4 17" />
+                </svg>
+
+
+
+            </div>
+
+            <div routerLink="/home" class="w-full cursor-pointer ">
+
+                <div
+                    class="flex flex-row justify-center md:justify-start 2xl:justify-start 2xl:pl-32 lg:justify-start lg:p-8 p-0  items-center text-blue-500">
+                    <div class="sm:w-[32px] w-[32px] text-blue-500 ">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current">
+                            <g fill="none" fill-rule="evenodd" class="fill-current">
+                                <path
+                                    d="m12.594 23.258l-.012.002l-.071.035l-.02.004l-.014-.004l-.071-.036q-.016-.004-.024.006l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.016-.018m.264-.113l-.014.002l-.184.093l-.01.01l-.003.011l.018.43l.005.012l.008.008l.201.092q.019.005.029-.008l.004-.014l-.034-.614q-.005-.019-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.003-.011l.018-.43l-.003-.012l-.01-.01z" />
+                                <path
+                                    d="M17.52 4a2 2 0 0 1 1.442.614l.12.137l3.05 3.812c.757.947.134 2.334-1.04 2.432L20.96 11H20v8a1 1 0 0 1-1.993.117L18 19v-8h-2v7a2 2 0 0 1-1.85 1.995L14 20H6a2 2 0 0 1-1.994-1.85L4 18v-7h-.96c-1.212 0-1.906-1.353-1.25-2.33l.08-.107l3.049-3.812a2 2 0 0 1 1.38-.743L6.482 4zM7 11H6v7h8v-7h-1v4a1 1 0 0 1-1 1H8a1 1 0 0 1-1-1zm4 0H9v3h2zm6.52-5H6.48l-2.4 3h15.84z" />
+                            </g>
+                        </svg>
+                    </div>
+                    <span
+                        class="whitespace-nowrap text-[16px] md:text-[20px] lg:text-[24px] font-sans font-semibold text-blue-500">
+                        Small Market
+                    </span>
+
+                </div>
+            </div>
+            <div class="w-full hidden lg:block">
+                <ul
+                    class="relative flex flex-row  justify-center gap-2 2xl:gap-6 text[24px]  p-1 font-medium font-sans">
+                    <div [ngClass]="{'2xl:-translate-x-[196px] lg:-translate-x-[164px] xl:-translate-x-[163px] w-[64px]': bg === 'home', '2xl:-translate-x-[101px] xl:-translate-x-[85px] lg:-translate-x-[85px] w-[84px]': bg === 'category','2xl:translate-x-[1px] xl:translate-x-[1px] lg:translate-x-[1px] w-[78px]': bg === 'product', '2xl:translate-x-[101px] xl:translate-x-[85px] lg:translate-x-[85px] w-[79px]': bg === 'order',  '2xl:translate-x-[195px] xl:translate-x-[163px] lg:translate-x-[164px] w-[70px]': bg === 'about','w-full bg-blue-200': bg === 'user' || bg ==='favorite' ||bg === 'cart'}"
+                        class="absolute  h-6 tranform  z-10 h-2 bg-blue-500 rounded-lg transition-all duration-500 ease-out">
+
+                    </div>
+                    <li [ngClass]="{ 'text-white': bg === 'home', 'text-gray-400': bg !== 'home' }" routerLink="/home"
+                        class=" z-20 cursor-pointer   font-semibold h-auto ">
+                        <span class=" p-1 rounded-lg ">
+                            Home
+                        </span>
+                    </li>
+                    <li [ngClass]="{ 'text-white': bg === 'category', 'text-gray-400': bg !== 'category' }"
+                        routerLink="/category" class=" z-20 cursor-pointer  font-semibold h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            Category
+                        </span>
+                    </li>
+                    <li [ngClass]="{ 'text-white': bg === 'product', 'text-gray-400': bg !== 'product' }"
+                        routerLink="/product" class=" z-20 cursor-pointer  font-semibold h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            Product
+                        </span>
+                    </li>
+                    <li [ngClass]="{ 'text-white': bg === 'order', 'text-gray-400': bg !== 'order' }"
+                        routerLink="/order" class=" z-20 cursor-pointer  font-semibold h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            OrderList
+                        </span>
+                    </li>
+                    <li [ngClass]="{ 'text-white': bg === 'about', 'text-gray-400': bg !== 'about' }"
+                        routerLink="/about" class=" z-20 cursor-pointer   font-semibold h-auto ">
+                        <span class=" p-1 rounded-lg">
+                            About
+                        </span>
+                    </li>
+
+                </ul>
+            </div>
+
+            <div class="w-full flex justify-end items-center    ">
+                <div class=" relative rounded-md mr-4 ">
+                    <input type="text" (keyup)="checkInputStatus($event)" [(ngModel)]="product_name"
+                        (keyup)="searchProduct(product_name)"
+                        class="search-bar w-24 sm:w-48 h-10 pl-4 pr-10 py-2 text-sm border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300"
+                        placeholder="Search products...">
+                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+
+                    </div>
+                </div>
+                <ul class="flex flex-row justify-center items-center w-fit xl:w-full gap-2">
+
+                    <li routerLink="/cart" class="w-auto  h-auto cursor-pointer">
+                        <div [ngClass]="{'text-blue-500': bg === 'cart', 'text-gray-400': bg !== 'cart'}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1zm6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5z" />
+                            </svg>
+                        </div>
+
+                    </li>
+
+                    <!-- <li routerLink="/favorite" class="w-auto whitespace-nowrap h-auto cursor-pointer">
+                        <div [ngClass]="{'text-blue-500': bg === 'favorite', 'text-gray-400': bg !== 'favorite'}">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                class="fill-current">
+                                <path
+                                    d="M12 20.325q-.35 0-.712-.125t-.638-.4l-1.725-1.575q-2.65-2.425-4.788-4.812T2 8.15Q2 5.8 3.575 4.225T7.5 2.65q1.325 0 2.5.562t2 1.538q.825-.975 2-1.537t2.5-.563q2.35 0 3.925 1.575T22 8.15q0 2.875-2.125 5.275T15.05 18.25l-1.7 1.55q-.275.275-.637.4t-.713.125M11.05 6.75q-.725-1.025-1.55-1.563t-2-.537q-1.5 0-2.5 1t-1 2.5q0 1.3.925 2.763t2.213 2.837t2.65 2.575T12 18.3q.85-.775 2.213-1.975t2.65-2.575t2.212-2.837T20 8.15q0-1.5-1-2.5t-2.5-1q-1.175 0-2 .538T12.95 6.75q-.175.25-.425.375T12 7.25t-.525-.125t-.425-.375m.95 4.725" />
+                            </svg>
+                        </div>
+                    </li> -->
+                    <li *ngIf="!isLoggedIn" routerLink="/login" class="w-auto whitespace-nowrap h-auto cursor-pointer">
+                        <button
+                            class="w-full hidden lg:block font-sans text-[16px] text-white font-medium bg-blue-500 rounded-lg px-1">Login</button>
+                    </li>
+                    <li *ngIf="isLoggedIn" routerLink="/user"
+                        [ngClass]="{'text-blue-500': bg === 'user', 'text-gray-400': bg !== 'user'}"
+                        class="w-auto whitespace-nowrap h-full hidden md:block  cursor-pointer  cursor-pointer">
+                        <div class="flex flex-row gap-2 w-10 xl:w-auto">
+                            <div>
+                                <!-- <img class="w-[34px] h-auto rounded-full" src="avatar.avif"> -->
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="stroke-current ">
+                                    <path fill="none"  stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0-8 0M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2" />
+                                </svg>
+
+                            </div>
+                            <div class="flex flex-col tranform font-sans hidden xl:block -translate-y-1 w-32">
+                                <!-- <span class="text-[14px]">
+                                    Wellcome!
+                                </span>
+
+                                <span class="font-semibold text-[14px] xl:block hidden">
+                                    kakada ung
+                                </span> -->
+                            </div>
+                            <div></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+    <div class="w-full h-full max-sm:overflow-scroll scrollbar-hide  transition-all duration-1000 ease-in-out   py-2 ">
+
+        <router-outlet></router-outlet>
+
+    </div>
+
+    <!-- <div class="hidden  max-sm:block rounded-t-lg w-full h-[64px] bg-white sticky bottom-0 left-0 z-50">
+
+        <ul class="flex relative justify-center items-center gap-6 w-full p-2 transform  z-40">
+
+            <div [ngClass]="{'-translate-x-[128px]': mobileBg === 'home', '-translate-x-[64px]': mobileBg === 'product', 'translate-x-[0px]': mobileBg === 'order', 'translate-x-[64px]': mobileBg === 'cart', 'translate-x-[128px]': mobileBg === 'user'}"
+                class="overflow-hidden z-10 absolute w-[54px]  transform -translate-y-[2px] transition-all duration-500 ease-in-out ">
+                <div
+                    class="bg-blue-600 w-[54px] h-[60px] transform -translate-y-[20px] rounded-b-full  inset-shadow-md inset-shadow-blue-900 ">
+
+                </div>
+
+            </div>
+
+
+
+            <li [routerLinkActive]="[ 'w-[48px]','h-[48px]','bg-blue-500','transform', '-translate-y-5']"
+                [routerLinkActiveOptions]="{ exact: true }" routerLink="/home"
+                class=" text-white z-20 bg-blue-300 rounded-full flex justify-center items-center p-2 transition duration-500 ease-in-out">
+
+                <div class="w-[24px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="fill-current">
+                        <path
+                            d="M6 19h3v-5q0-.425.288-.712T10 13h4q.425 0 .713.288T15 14v5h3v-9l-6-4.5L6 10zm-2 0v-9q0-.475.213-.9t.587-.7l6-4.5q.525-.4 1.2-.4t1.2.4l6 4.5q.375.275.588.7T20 10v9q0 .825-.588 1.413T18 21h-4q-.425 0-.712-.288T13 20v-5h-2v5q0 .425-.288.713T10 21H6q-.825 0-1.412-.587T4 19m8-6.75" />
+                    </svg>
+                </div>
+
+            </li>
+            <li [routerLinkActive]="['text-white', 'w-[48px]','h-[48px]','bg-blue-500','transform', '-translate-y-5']"
+                [routerLinkActiveOptions]="{ exact: true }" routerLink="/product"
+                class="text-white z-20 bg-blue-300 rounded-full flex justify-center items-center p-2 transition duration-500 ease-in-out">
+
+
+                <div class="w-[24px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+                        <path fill="#fff" fill-rule="evenodd"
+                            d="M464 144c8.837 0 16 7.163 16 16v304c0 8.836-7.163 16-16 16H160c-8.837 0-16-7.164-16-16V160c0-8.837 7.163-16 16-16zm-52 68H212v200h200zm493.333 87.686c6.248 6.248 6.248 16.379 0 22.627l-181.02 181.02c-6.248 6.248-16.378 6.248-22.627 0l-181.019-181.02c-6.248-6.248-6.248-16.379 0-22.627l181.02-181.02c6.248-6.248 16.378-6.248 22.627 0zm-84.853 11.313L713 203.52L605.52 311L713 418.48zM464 544c8.837 0 16 7.164 16 16v304c0 8.837-7.163 16-16 16H160c-8.837 0-16-7.163-16-16V560c0-8.836 7.163-16 16-16zm-52 68H212v200h200zm452-68c8.837 0 16 7.164 16 16v304c0 8.837-7.163 16-16 16H560c-8.837 0-16-7.163-16-16V560c0-8.836 7.163-16 16-16zm-52 68H612v200h200z" />
+                    </svg>
+                </div>
+            </li>
+            <li [routerLinkActive]="['text-white', 'w-[48px]','h-[48px]','bg-blue-500','transform', '-translate-y-5']"
+                [routerLinkActiveOptions]="{ exact: true }" routerLink="/order"
+                class="text-white z-20 bg-blue-300 rounded-full flex justify-center items-center p-2 transition duration-500 ease-in-out">
+
+                <div class="w-[24px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g fill="none" stroke="#fff" stroke-width="2">
+                            <rect width="14" height="17" x="5" y="4" rx="2" />
+                            <path stroke-linecap="round" d="M9 9h6m-6 4h6m-6 4h4" />
+                        </g>
+                    </svg>
+                </div>
+            </li>
+            <li [routerLinkActive]="['text-white', 'w-[48px]','h-[48px]','bg-blue-500','transform', '-translate-y-5']"
+                [routerLinkActiveOptions]="{ exact: true }" routerLink="/cart"
+                class="text-white z-20 bg-blue-300 rounded-full flex justify-center items-center p-2 transition duration-500 ease-in-out">
+
+                <div class="w-[24px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path fill="#fff"
+                            d="M17 18a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2M1 2h3.27l.94 2H20a1 1 0 0 1 1 1c0 .17-.05.34-.12.5l-3.58 6.47c-.34.61-1 1.03-1.75 1.03H8.1l-.9 1.63l-.03.12a.25.25 0 0 0 .25.25H19v2H7a2 2 0 0 1-2-2c0-.35.09-.68.24-.96l1.36-2.45L3 4H1zm6 16a2 2 0 0 1 2 2a2 2 0 0 1-2 2a2 2 0 0 1-2-2c0-1.11.89-2 2-2m9-7l2.78-5H6.14l2.36 5z" />
+                    </svg>
+                </div>
+            </li>
+            <li [ngClass]="{'w-[48px] h-[48px] bg-blue-500 -translate-y-5': mobileBg === 'user'}" routerLink="/user"
+                class="text-white z-20 bg-blue-300  rounded-full flex justify-center items-center p-2 transition duration-500 ease-in-out">
+
+                <div class="w-[24px]">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <g fill="none" stroke="#fff" stroke-width="1.5">
+                            <circle cx="12" cy="6" r="4" />
+                            <path d="M20 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S7.582 13 12 13s8 2.015 8 4.5Z" />
+                        </g>
+                    </svg>
+                </div>
+            </li>
+
+
+        </ul>
+
+    </div> -->
+
+    <aside [ngClass]="sidebar ? ['animation-slideIn'] :['animation-slideOut']"
+        class="absolute lg:hidden -top-2 left-0 bg-white z-50 w-1/2 h-screen flex flex-col gap-4 p-2 shadow shadow-gray-600/60 font-sans">
+        <div class="w-full flex justify-start mt-2 pl-2" (click)="sidebar = !sidebar">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                class="bg-gray-100 rounded-lg stroke-current text-blue-500">
+                <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M11 12H3m13-6H3m13 12H3m16-8l-4 4m0-4l4 4" />
+            </svg>
+        </div>
+        <div class="w-full h-10  flex justify-start   ">
+            <div class="w-full  rounded-lg p-1  ">
+                <ul class="relative flex flex-col  justify-start gap-6  p-1">
+                    <div [ngClass]="{'-translate-y-[3px]': bg === 'home', 'translate-y-[45px]': bg === 'category','translate-y-[93px]': bg === 'product', 'translate-y-[140px]': bg === 'order',  'hidden': bg === 'user'}"
+                        class="absolute w-full h-[32px] tranform  z-10 h-2 bg-blue-500 border border-blue-800 rounded-lg transition-all duration-500 ease-out">
+
+                    </div>
+                    <li [routerLinkActive]="[ 'text-gray-100','scale-x-105','translate-x-2']"
+                        (click)="sidebar = !sidebar" [routerLinkActiveOptions]="{ exact: true }" routerLink="/home"
+                        class=" z-20 cursor-pointer   font-semibold text-gray-400 h-auto  transform transition duration-500 ease-in-out">
+                        <span class=" p-1 rounded-lg ">
+                            Home
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-gray-100','scale-x-105','translate-x-2']"
+                        (click)="sidebar = !sidebar" [routerLinkActiveOptions]="{ exact: true }" routerLink="/category"
+                        class=" z-20 cursor-pointer  font-semibold text-gray-400 h-auto  transform transition duration-500 ease-in-out ">
+                        <span class=" p-1 rounded-lg">
+                            Category
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-gray-100','scale-x-105','translate-x-2']"
+                        (click)="sidebar = !sidebar" [routerLinkActiveOptions]="{ exact: true }" routerLink="/product"
+                        class=" z-20 cursor-pointer  font-semibold text-gray-400 h-auto  transform transition duration-500 ease-in-out ">
+                        <span class=" p-1 rounded-lg">
+                            Product
+                        </span>
+                    </li>
+                    <li [routerLinkActive]="[ 'text-gray-100','scale-x-105','translate-x-2']"
+                        (click)="sidebar = !sidebar" [routerLinkActiveOptions]="{ exact: true }" routerLink="/order"
+                        class=" z-20 cursor-pointer  font-semibold text-gray-400 h-auto  transform transition duration-500 ease-in-out ">
+                        <span class=" p-1 rounded-lg">
+                            OrderList
+                        </span>
+                    </li>
+                    <!-- <li [routerLinkActive]="[ 'text-gray-100','scale-x-105','translate-x-2']"
+                        (click)="sidebar = !sidebar" [routerLinkActiveOptions]="{ exact: true }" routerLink="/contact"
+                        class=" z-20 cursor-pointer   font-semibold text-gray-400 h-auto  transform transition duration-500 ease-in-out ">
+                        <span class=" p-1 rounded-lg">
+                            Contact
+                        </span>
+                    </li> -->
+                    <li *ngIf="!isLoggedIn" routerLink="/login" class="w-auto whitespace-nowrap h-auto cursor-pointer">
+                        <button
+                            class="w-full  font-sans text-[16px] text-white font-sans font-medium bg-gray-500 bg-opacity-50 rounded-lg px-1">Login</button>
+                    </li>
+                    <li *ngIf="isLoggedIn" routerLink="/user" (click)="sidebar = !sidebar"
+                        [ngClass]="{'text-blue-500': bg === 'user', 'text-gray-800': bg !== 'user'}"
+                        class="w-full whitespace-nowrap flex justify-center items-center  cursor-pointer  cursor-pointer">
+                        <div class="flex flex-col gap-2 w-10 flex justify-between items-center">
+                            <div>
+                                <img class="w-full h-auto rounded-full" src="avatar.avif">
+
+                            </div>
+                            <div class="flex flex-col tranform font-sans  ">
+                                <span class="text-[14px]">
+                                    Wellcome!
+                                </span>
+
+                                <span class="font-semibold text-[14px] ">
+                                    kakada ung
+                                </span>
+                            </div>
+                            <div></div>
+                        </div>
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </aside>
+
+
+    @if (searchBoard) {
+    <div
+        class="sm:w-1/2 w-full  h-auto font-sans text-gray-400 bg-white border border-blue-500 absolute z-50 top-[64px]  xl:top-[64px] xl:left-[640px] lg:top-[64px] lg:left-[510px] md:top-[64px] md:left-[380px] sm:top-[64px] sm:left-[240px] rounded-lg transition-all duration-500 ease-in-out p-4">
+
+        <div>Products</div>
+        @if(products.length>0){
+        <div class="flex flex-wrap gap-4 mt-4">
+            @for(product of products; track product){
+            <div
+                class="bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-28 sm:w-48 snap-center animate-slide-from-bottom flex flex-col justify-center items-center">
+                <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="product.full_banner_url "
+                    alt="Fig" class="sm:h-48 object-contain h-[50px] ">
+                <div class="p-4 w-full">
+                    <h3
+                        class="text-sm font-semibold text-gray-800 flex whitespace-nowrap flex-col px-1 overflow-hidden">
+                        {{product.product_name}}
+                    </h3>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-400 text-xs sm:text-sm">★★★★☆</span>
+                        <span class="text-gray-600 text-xs ml-1">(5.00)</span>
+                    </div>
+                    <div class="mt-2">
+                        <span class="text-gray-500 line-through text-xs sm:text-sm">$160.00</span>
+                        <span class="text-red-600 font-bold ml-2 text-xs sm:text-sm">${{product.sell_price}}</span>
+                    </div>
+                    <button  (click)="viewDetail(product.id)"
+                        class="mt-2 w-full bg-blue-600 text-white py-1 rounded hover:bg-blue-700 transition duration-200 text-xs sm:text-sm">
+                        View Detail
+                    </button>
+                </div>
+            </div>
+            }
+        </div>
+        }@else{
+        <div class="text-center">
+            <span class=" text-[16px]">No product found</span>
+        </div>
+        }
+
+
+
+
+    </div>
+    }
+</div>

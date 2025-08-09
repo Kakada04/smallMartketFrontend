@@ -1,0 +1,42 @@
+@if(choose && cartItem) {
+  <div  class="bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-40 sm:w-64 snap-center  flex flex-col justify-center items-center">
+    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="loading..." style="height: 200px; object-fit: contain;" class="sm:h-48">
+    <div class="p-4 w-full">
+      <h3 class="text-sm font-semibold text-gray-800 flex whitespace-nowrap flex-col px-1 overflow-hidden">
+        {{ cartItem.product?.product_name }}
+      </h3>
+      <div class="flex items-center mt-1">
+        <span class="text-yellow-400 text-xs sm:text-sm">★★★★☆</span>
+        <span class="text-gray-600 text-xs ml-1">(5.00)</span>
+      </div>
+      <div class="mt-2">
+        <span class="text-red-600 font-bold ml-2 text-xs sm:text-sm">${{ cartItem.product?.sell_price }}</span>
+      </div>
+      <div class="w-full flex flex-row justify-between items-center gap-4 mt-4">
+        <button (click)="decreasequantity()" class="w-full bg-red-500 rounded-2xl text-white">-</button>
+        <span class="w-full text-center text-gray-800 text-xs sm:text-sm">{{ cartItem.quantity }}</span>
+        <button (click)="increasequantity()" class="w-full bg-blue-500 rounded-2xl text-white">+</button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div  class="bg-white cursor-pointer shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-40 sm:w-64 snap-center animate-slide-from-bottom flex flex-col justify-center items-center">
+    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="Fig" style="height: 200px; object-fit: contain;" class="sm:h-48">
+    <div class="p-4 w-full">
+      <h3 class="text-sm font-semibold text-gray-800 flex whitespace-nowrap flex-col px-1 overflow-hidden">
+        {{ product.product_name }}
+      </h3>
+      <div class="flex items-center mt-1">
+        <span class="text-yellow-400 text-xs sm:text-sm">★★★★☆</span>
+        <span class="text-gray-600 text-xs ml-1">(5.00)</span>
+      </div>
+      <div class="mt-2">
+        <span class="text-gray-500 line-through text-xs sm:text-sm">$160.00</span>
+        <span class="text-red-600 font-bold ml-2 text-xs sm:text-sm">{{ product.sell_price }}</span>
+      </div>
+      <button (click)="addToCartClicked()" class="mt-2 w-full bg-blue-600 text-white py-1 rounded hover:bg-blue-700 transition duration-200 text-xs sm:text-sm">
+        Add to Cart
+      </button>
+    </div>
+  </div>
+}

@@ -1,0 +1,34 @@
+@keyframes slide-from-bottom {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(100%);
+    }
+}
+
+
+.animate-slide-from-bottom {
+    animation: slide-from-bottom 0.8s ease-out forwards;
+}
+
+.product-title {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+     line-clamp: 1;
+    /* Show 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    /* Show 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
