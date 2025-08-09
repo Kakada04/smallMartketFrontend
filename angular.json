@@ -23,7 +23,9 @@
             ],
             "styles": [
               "src/styles.css"
-            ]
+            ],
+            "baseHref": "/"
+
           },
           "configurations": {
             "production": {
