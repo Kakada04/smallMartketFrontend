@@ -1,6 +1,6 @@
 @if(choose && cartItem) {
-  <div  class="bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-40 sm:w-64 snap-center  flex flex-col justify-center items-center">
-    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="loading..." style="height: 200px; object-fit: contain;" class="sm:h-48">
+  <div  class="bg-white shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-[148px] sm:w-64 snap-center  flex flex-col justify-center items-center">
+    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="loading..." style="height: 100px; object-fit: contain;" class="sm:h-48">
     <div class="p-4 w-full">
       <h3 class="text-sm font-semibold text-gray-800 flex whitespace-nowrap flex-col px-1 overflow-hidden">
         {{ cartItem.product?.product_name }}
@@ -20,8 +20,8 @@
     </div>
   </div>
 } @else {
-  <div  class="bg-white cursor-pointer shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-40 sm:w-64 snap-center animate-slide-from-bottom flex flex-col justify-center items-center">
-    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="Fig" style="height: 200px; object-fit: contain;" class="sm:h-48">
+  <div  class="bg-white cursor-pointer shadow-lg rounded-lg overflow-hidden flex-shrink-0 w-[148px] sm:w-64 snap-center animate-slide-from-bottom flex flex-col justify-center items-center">
+    <img routerLink="/productdetail" (click)="viewDetail(product.id)" [src]="'http://smallmarketbackendlaravel-production.up.railway.app/storage/'+product.banner_img" alt="Fig" style="height: 100px; object-fit: contain;" class="sm:h-48">
     <div class="p-4 w-full">
       <h3 class="text-sm font-semibold text-gray-800 flex whitespace-nowrap flex-col px-1 overflow-hidden">
         {{ product.product_name }}
